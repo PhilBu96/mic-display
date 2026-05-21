@@ -1,0 +1,55 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# =========================
+# PyCharm / IntelliJ
+# =========================
+.idea/
+*.iml
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs / Debug
+# =========================
+*.log
+
+# =========================
+# Testing / Cache
+# =========================
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# =========================
+# Build / Packaging (future-proof)
+# =========================
+build/
+dist/
+*.egg-info/
+
+# =========================
+# Qt / PySide caches (safe to ignore)
+# =========================
+*.qmlc
+*.jsc
+
+# =========================
+# Project-specific noise
+# =========================
+*.tmp
