@@ -7,13 +7,17 @@ from PySide6.QtCore import Qt, QTimer
 
 from app import audio_monitor
 
-# TODO: implement always on top
+# DONE: implement always on top
 
 # Overlay initializing
 print("Initializing overlay...")
 app = QApplication(sys.argv)
 widget = QWidget()
-widget.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.Tool)
+widget.setWindowFlags(
+    Qt.WindowType.FramelessWindowHint |
+    Qt.WindowType.Tool |
+    Qt.WindowType.WindowStaysOnTopHint |
+    Qt.WindowType.WindowTransparentForInput)
 widget.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
 
 # Get the screen resolution
@@ -59,8 +63,8 @@ hide_timer = QTimer(widget)
 hide_timer.setSingleShot(True)
 hide_timer.timeout.connect(widget.hide)
 
-def run():
 
+def run():
     widget.show()
 
     timer = QTimer(widget)
@@ -73,13 +77,13 @@ def run():
 
 # Function for the mute check
 def check_mute():
-    #print("Checking mute...")
+    # print("Checking mute...")
     global last_state
     state = audio_monitor.get_mute_state()
     if state == last_state:
         return
     last_state = state
-    #print(f"Mute state: {state}")
+    # print(f"Mute state: {state}")
     draw_svg(svg, state)
 
     widget.show()
@@ -88,7 +92,6 @@ def check_mute():
 
 # Function for SVG drawing
 def draw_svg(vector, mode):
-
     print(f"Drawing SVG mode: {mode}...")
     if mode == 1:
         vector.load(str(mute_icon))
