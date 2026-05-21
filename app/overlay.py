@@ -78,9 +78,13 @@ svg.setFixedSize(relative_screen_width, relative_screen_height)
 svg.show()
 last_state = None
 
+def start_fade_out():
+    fade_out_anim.start()
+
 hide_timer = QTimer(widget)
 hide_timer.setSingleShot(True)
-hide_timer.timeout.connect(fade_out_anim.start)
+fade_out_anim.finished.connect(widget.hide)
+hide_timer.timeout.connect(start_fade_out)
 
 
 def run():
