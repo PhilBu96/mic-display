@@ -1,13 +1,14 @@
 import sys
 from pathlib import Path
 
-from PySide6.QtWidgets import QApplication, QWidget
+from PySide6.QtWidgets import QApplication, QWidget, QGraphicsOpacityEffect
 from PySide6.QtSvgWidgets import QSvgWidget
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import Qt, QTimer, QPropertyAnimation
 
 from app import audio_monitor
 
 # DONE: implement always on top
+# DONE: smooth animation
 
 # Overlay initializing
 print("Initializing overlay...")
@@ -19,6 +20,24 @@ widget.setWindowFlags(
     Qt.WindowType.WindowStaysOnTopHint |
     Qt.WindowType.WindowTransparentForInput)
 widget.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
+
+# Animation creation
+print("Initializing animations...")
+opacity_effect = QGraphicsOpacityEffect()
+widget.setGraphicsEffect(opacity_effect)
+opacity_effect.setOpacity(1.0)
+
+# Fade in
+fade_in_anim = QPropertyAnimation(opacity_effect, b"opacity")
+fade_in_anim.setDuration(250)
+fade_in_anim.setStartValue(0)
+fade_in_anim.setEndValue(1)
+
+# Fade out
+fade_out_anim = QPropertyAnimation(opacity_effect, b"opacity")
+fade_out_anim.setDuration(1000)
+fade_out_anim.setStartValue(1)
+fade_out_anim.setEndValue(0)
 
 # Get the screen resolution
 print("Get screen resolution...")
@@ -61,11 +80,12 @@ last_state = None
 
 hide_timer = QTimer(widget)
 hide_timer.setSingleShot(True)
-hide_timer.timeout.connect(widget.hide)
+hide_timer.timeout.connect(fade_out_anim.start)
 
 
 def run():
     widget.show()
+    fade_in_anim.start()
 
     timer = QTimer(widget)
     timer.setInterval(500)
@@ -87,6 +107,7 @@ def check_mute():
     draw_svg(svg, state)
 
     widget.show()
+    fade_in_anim.start()
     hide_timer.start(3000)
 
 
