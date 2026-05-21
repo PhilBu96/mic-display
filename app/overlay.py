@@ -7,6 +7,8 @@ from PySide6.QtCore import Qt, QTimer
 
 from app import audio_monitor
 
+# TODO: implement always on top
+
 # Overlay initializing
 print("Initializing overlay...")
 app = QApplication(sys.argv)
