@@ -53,12 +53,16 @@ svg.setFixedSize(relative_screen_width, relative_screen_height)
 svg.show()
 last_state = None
 
+hide_timer = QTimer(widget)
+hide_timer.setSingleShot(True)
+hide_timer.timeout.connect(widget.hide)
+
 def run():
 
     widget.show()
 
     timer = QTimer(widget)
-    timer.setInterval(300)
+    timer.setInterval(500)
     timer.timeout.connect(check_mute)
     timer.start()
 
@@ -75,6 +79,9 @@ def check_mute():
     last_state = state
     #print(f"Mute state: {state}")
     draw_svg(svg, state)
+
+    widget.show()
+    hide_timer.start(3000)
 
 
 # Function for SVG drawing
