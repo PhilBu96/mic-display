@@ -21,7 +21,7 @@ volume = cast(interface, POINTER(IAudioEndpointVolume))
 
 def get_mute_state():
     # Get boolean value if microphone is muted
-    print("Get mute state...")
+    #print("Get mute state...")
     is_mute = volume.GetMute()
-    print(f"Mute: {is_mute}")
+    #print(f"Mute: {is_mute}")
     return is_mute

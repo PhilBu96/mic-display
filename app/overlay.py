@@ -67,13 +67,13 @@ def run():
 
 # Function for the mute check
 def check_mute():
-    print("Checking mute...")
+    #print("Checking mute...")
     global last_state
     state = audio_monitor.get_mute_state()
     if state == last_state:
         return
     last_state = state
-    print(f"Mute state: {state}")
+    #print(f"Mute state: {state}")
     draw_svg(svg, state)
 
 
