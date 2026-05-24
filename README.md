@@ -6,7 +6,7 @@ Built with **Python**, **PySide6 (Qt)** and **pycaw**.
 
 ---
 
-## ✨ Features
+## Features
 
 - Real-time microphone mute detection (system audio state via pycaw)
 - Smooth fade-in / fade-out UI transitions
@@ -19,7 +19,7 @@ Built with **Python**, **PySide6 (Qt)** and **pycaw**.
 
 ---
 
-## 🎬 UI Behavior
+## UI Behavior
 
 The overlay behaves like a minimal HUD element:
 
@@ -30,7 +30,7 @@ The overlay behaves like a minimal HUD element:
 
 ---
 
-## 🧠 How it works
+## How it works
 
 The application continuously monitors the microphone state and updates the overlay only when a change occurs.
 
@@ -56,14 +56,14 @@ Only state changes trigger UI updates and animations.
 
 ---
 
-## 🖥️ Requirements
+## Requirements
 
 - Python 3.10+
 - Windows (uses Windows Core Audio APIs via pycaw)
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 Install required packages:
 
@@ -71,7 +71,7 @@ pip install PySide6 pycaw comtypes
 
 ---
 
-## 🚀 How to run
+## How to run
 
 python main.py
 
@@ -92,7 +92,7 @@ mic-display/
 
 ---
 
-## 🛠️ Planned improvements
+## Planned improvements
 
 - Multi-monitor support improvements
 - Startup autostart integration
@@ -101,12 +101,12 @@ mic-display/
 
 ---
 
-## 🧪 Project status
+## Project status
 
 Stable early-stage prototype with working overlay system and smooth UI transitions.
 
 ---
 
-## 📜 License
+## License
 
 Free to use and modify.
