@@ -77,7 +77,7 @@ python main.py
 
 ---
 
-## 📁 Project structure
+## Project structure
 
 mic-display/
 │
